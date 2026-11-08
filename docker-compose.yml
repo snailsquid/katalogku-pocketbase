@@ -9,7 +9,7 @@ services:
     volumes:
       - product_data:/pb_data
     ports:
-      - "8091:8090"         # dashboard: http://IP_SERVER:8091/_/
+      - "${PRODUCT_PORT:-8091}:8090"         # dashboard: http://IP_SERVER:8091/_/
 
   account-service:          # PocketBase #2: users + favorites
     build: ./pocketbase
@@ -17,7 +17,7 @@ services:
     volumes:
       - account_data:/pb_data
     ports:
-      - "8092:8090"         # dashboard: http://IP_SERVER:8092/_/
+      - "${ACCOUNT_PORT:-8092}:8090"         # dashboard: http://IP_SERVER:8092/_/
 
   gateway:                  # satu pintu masuk API
     image: nginx:1.28-alpine
